@@ -1,0 +1,57 @@
+package Assignment;
+
+public class Mirror {
+    static class Node {
+        int data;
+        Node left;
+        Node right;
+
+        Node(int data) {
+            this.data = data;
+            this.left = null;
+            this.right = null;
+        }
+
+    }
+
+    public static Node isMirror(Node root) {
+        if (root == null) {
+            return null;
+        }
+        Node rightele = isMirror(root.right);
+        Node leftEle = isMirror(root.left);
+
+        // swap
+        root.left = rightele;
+        root.right = leftEle;
+        return root;
+    }
+
+    public static void inorder(Node root) {
+        if (root == null) {
+            return;
+        }
+        inorder(root.right);
+        System.out.print(root.data + " ");
+        inorder(root.left);
+
+    }
+
+    public static void main(String[] args) {
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
+        System.out.println("before mirror image");
+        inorder(root);
+        System.out.println();
+
+        System.out.println(isMirror(root).data);
+        System.out.println();
+        System.out.println("after mirror");
+        inorder(root);
+    }
+}
