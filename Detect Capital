@@ -1,0 +1,19 @@
+public class DetectCapital {
+    public static boolean isdcapital(String str) {
+        if (str.equals(str.toUpperCase())) {
+            return true;
+        }
+        if (str.equals(str.toLowerCase())) {
+            return true;
+        }
+        if (Character.isUpperCase(str.charAt(0)) && str.substring(1).equals(str.substring(1).toLowerCase())) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        String str = "GoOgle";
+        System.out.println(isdcapital(str));
+    }
+}
