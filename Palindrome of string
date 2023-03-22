@@ -1,0 +1,30 @@
+ 
+ StringBuffer str = new StringBuffer(S);
+ str.reverse();
+ if(str.toString().equals(S)) return 1;
+ return 0;
+ 
+ 
+ 
+ 
+ or    
+ lass Solution {
+    int isPalindrome(String S) {
+        int count=1;
+        for(int i=0;i<S.length()/2;i++){  // check half of string 
+            int n = S.length();
+            if(S.charAt(i)!=S.charAt(n-1-i)){  //  half left != half right
+                count=0;
+            }
+            else{
+                count*=1;
+            }
+        }
+        return count;
+    }
+}
+
+The count variable is initialized to 1 because if the string is empty or has only one character, then it is a palindrome.
+
+The count variable is multiplied by 1 in the else block because if the characters match, then the count variable should remain 1.
+
